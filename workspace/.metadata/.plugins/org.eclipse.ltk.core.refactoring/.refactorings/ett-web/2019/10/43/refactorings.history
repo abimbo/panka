@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;ett-web/src/main/webapp/Index.jsp&apos; to &apos;index.jsp&apos;" description="Rename resource &apos;Index.jsp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/webapp/Index.jsp" name="index.jsp" stamp="1572038572152" updateReferences="true"/>
-</session>
