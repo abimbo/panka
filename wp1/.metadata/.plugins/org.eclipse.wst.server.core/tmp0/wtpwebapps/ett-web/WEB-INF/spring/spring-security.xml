@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<beans:beans
+  xmlns="http://www.springframework.org/schema/security"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:beans="http://www.springframework.org/schema/beans"
+  xsi:schemaLocation="
+    http://www.springframework.org/schema/security 
+    http://www.springframework.org/schema/security/spring-security-3.2.xsd
+    http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+ 
+    <!-- enable use-expressions -->
+<!--
+	<http auto-config="true">
+ 
+		<intercept-url pattern="/pages/**" access="ROLE_USER, ROLE_ADMINISTRATOR" />
+  
+		<form-login 
+		    login-page="/login.xhtml" 
+		    authentication-success-handler-ref="successHandler"
+		    login-processing-url="/appLogin"
+                    authentication-failure-url="/login.xhtml?error" 
+                    username-parameter="app_username"
+                    password-parameter="app_password" />
+		<logout logout-success-url="/logout"  />
+	</http>
+ 
+	<beans:bean id="NfpPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+		<beans:constructor-arg name="strength" value="11" />
+	</beans:bean>
+
+	<beans:bean id="successHandler" class="com.kuz.nfp.auth.Nfp2PAuthenticationSuccessHandler"/>
+	<beans:bean id="failureHandler" class="com.kuz.nfp.auth.NfpAuthenticationFailureHandler"/>
+
+	<beans:bean id="NfpAuthenticationProvider" class="com.kuz.nfp.services.auth.service.NfpAuthenticationProvider"/>
+-->
+	<!-- Select users and user_roles from database -->
+<!--
+	<authentication-manager>
+	  <authentication-provider user-service-ref="NfpAuthenticationProvider">
+	  	<password-encoder ref="NfpPasswordEncoder"/>
+	  </authentication-provider>
+	</authentication-manager>
+-->
+</beans:beans> 

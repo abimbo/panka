@@ -1,0 +1,3 @@
+127.0.0.1 - - [01/Nov/2019:18:54:57 +0100] "GET / HTTP/1.1" 404 951
+0:0:0:0:0:0:0:1 - - [01/Nov/2019:18:55:11 +0100] "GET /JavaServerFaces/faces/hello.xhtml HTTP/1.1" 200 775
+0:0:0:0:0:0:0:1 - - [01/Nov/2019:18:55:17 +0100] "POST /JavaServerFaces/faces/hello.xhtml HTTP/1.1" 200 351

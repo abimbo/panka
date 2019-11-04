@@ -1,0 +1,6 @@
+com\pank\ett\persistence\dao\imp\PrDaoImpl.class
+com\pank\ett\persistence\dao\imp\CRUDAdapter.class
+com\pank\ett\persistence\dao\PrDAO.class
+com\pank\ett\persistence\dao\CRUD.class
+com\pank\ett\persistence\dao\Listable.class
+com\pank\ett\persistence\model\Pr.class

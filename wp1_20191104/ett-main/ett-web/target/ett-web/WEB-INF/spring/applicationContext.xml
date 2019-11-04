@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+	<!-- Enable Spring Annotation Configuration -->
+	<context:annotation-config />
+	<!-- Scan for all of Spring components such as Spring Service -->
+	<context:component-scan base-package="com.pank.ett"></context:component-scan>
+	<!-- Create Data Source bean -->
+	<mvc:annotation-driven/>
+
+	<task:executor id="taskExecutor" pool-size="5"  />
+	<task:annotation-driven executor="taskExecutor"/>
+
+	<!-- Define SessionFactory bean -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+<!--
+		<property name="dataSource" ref="dataSource" />
+ -->
+ 		<property name="packagesToScan" value="com.pank.ett.persistence.model"/>
+		<property name="configLocation">
+<!--
+		<value>classpath:hibernate.cfg.xml</value>
+--> 
+
+        <value>classpath:hibernate-tomcat.cfg.xml</value> 
+
+        </property>
+	</bean>
+	<!-- Transaction Manager -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- Detect @Transactional Annotation -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+<!--  
+	<bean id="taskDocumentFactory" class="com.pank.ett.services.task.service.TaskDocumentFactory">
+		<property name="taskDocumentHandlers">
+			<map key-type="java.lang.String">
+				<entry key="project" value-ref="projectLevelTaskDocumentHandler"/>
+ 				<entry key="consortium_member" value-ref="consortiumLevelTaskDocumentHandler"/>
+			</map>
+		</property>
+	</bean>
+-->
+<!--
+	<bean id="loggingInInterceptor" class="org.apache.cxf.interceptor.LoggingInInterceptor"/>
+	<bean id="loggingOutInterceptor" class="org.apache.cxf.interceptor.LoggingOutInterceptor"/>
+
+	<bean class="org.apache.cxf.feature.LoggingFeature">
+		<property name="prettyLogging" value="true"/>
+	</bean>	
+
+	<bean id="jaxwsFactory" class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean">
+ 
+		<property name="address" value="http://localhost:8181/mockWebService_NFP_PKRSoap"/>
+ 
+		<property name="address" value="http://192.168.68.4/ws_Andoc_NFP_PKR/WebService_NFP_PKR.asmx"/>
+
+	</bean>
+-->
+	<bean id="taskExecutor"
+		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<property name="corePoolSize" value="5" />
+		<property name="maxPoolSize" value="10" />
+		<property name="WaitForTasksToCompleteOnShutdown" value="true" />
+	</bean>
+</beans>

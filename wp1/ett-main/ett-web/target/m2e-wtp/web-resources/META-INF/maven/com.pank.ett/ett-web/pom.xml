@@ -1,0 +1,194 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.pank.ett</groupId>
+    <artifactId>ett-main</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>ett-web</artifactId>
+  <packaging>war</packaging>
+  <name>ett-web layer</name>
+ <properties>
+   <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+   <primefaces.version>6.0</primefaces.version>
+   <poi.version>3.15</poi.version>
+ </properties>
+ 
+  <dependencies>
+
+		<dependency>
+		  <groupId>junit</groupId>
+		  <artifactId>junit</artifactId>
+		  <version>3.8.1</version>
+		  <scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi</artifactId>
+		    <version>${poi.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi-ooxml</artifactId>
+		    <version>3.15</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency> 
+		
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+
+		<!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl-api -->
+		<dependency>
+		    <groupId>javax.servlet.jsp.jstl</groupId>
+		    <artifactId>jstl-api</artifactId>
+		    <version>1.2-rev-1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.glassfish.web/jstl-impl -->
+		<dependency>
+		    <groupId>org.glassfish.web</groupId>
+		    <artifactId>jstl-impl</artifactId>
+		    <version>1.2</version>
+		</dependency>
+
+		<!-- Faces Library --> 
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>4.0.3.RELEASE</version>
+		</dependency> 
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>4.0.3.RELEASE</version>
+		</dependency> 
+		<!-- https://mvnrepository.com/artifact/org.primefaces/primefaces -->
+		<dependency>
+		    <groupId>org.primefaces</groupId>
+		    <artifactId>primefaces</artifactId>
+		    <version>${primefaces.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.primefaces.extensions/primefaces-extensions -->
+		<dependency>
+		    <groupId>org.primefaces.extensions</groupId>
+		    <artifactId>primefaces-extensions</artifactId>
+		    <version>6.0.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		    <version>3.5</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.primefaces.extensions/all-themes -->
+		<dependency>
+		    <groupId>org.primefaces.extensions</groupId>
+		    <artifactId>all-themes</artifactId>
+		    <version>1.0.8</version>
+		</dependency>
+
+
+
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<version>2.1.7</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-impl</artifactId>
+			<version>2.1.7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.1</version>
+		</dependency>
+                <!-- Tomcat 6 need this -->
+		<dependency>
+			<groupId>com.sun.el</groupId>
+			<artifactId>el-ri</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.pank.ett</groupId>
+			<artifactId>ett-service</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+  </dependencies>
+  <build>
+    <finalName>ett-web</finalName>
+	<plugins>
+		<plugin>
+	        <groupId>org.apache.maven.plugins</groupId>
+	        <artifactId>maven-resources-plugin</artifactId>
+	        <version>3.0.2</version>
+	        <configuration>
+	          <encoding>UTF-8</encoding>
+	        </configuration>
+	      </plugin>
+      <plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <version>2.1</version>
+        <configuration>
+        	<contextFile>${project.basedir}/src/main/tomcatconf/context.xml</contextFile>
+        	<serverXml>${project.basedir}/src/main/tomcatconf/server.xml</serverXml>
+        	<tomcatWebXml>${project.basedir}/src/main/tomcatconf/web.xml</tomcatWebXml>
+        	<url>http://localhost:8080/manager/text</url>
+        	<server>tomcatDev</server>
+        	<path>/ett-web</path>
+        	<contextReloadable>true</contextReloadable>
+        </configuration>
+      </plugin>
+
+		<plugin>
+		  <groupId>org.eclipse.jetty</groupId>
+		  <artifactId>jetty-maven-plugin</artifactId>
+		  <version>9.2.10.v20150310</version>
+		  <configuration>
+		  	<reload>automatic</reload>
+		  	<scanIntervalSeconds>3</scanIntervalSeconds>
+		  	<stopPort>9966</stopPort>
+		  	<jvmArgs>-Xms1024m -Xmx10240m -XX:PermSize=256m -XX:MaxPermSize=1024m</jvmArgs>
+		  	<stopKey>test</stopKey>
+		  	<stopWait>1</stopWait>
+		  	<webApp>
+		  		<contextPath>/nfp-web</contextPath>
+		  		<descriptor>${project.basedir}/src/main/webapp/WEB-INF/web.xml</descriptor>
+		  		<jettyEnvXml>${project.basedir}/src/main/webapp/WEB-INF/jetty-env.xml</jettyEnvXml>
+		  	</webApp>
+		  	<scanTargets>
+		  		<scanTarget>target/classes</scanTarget>
+		  	</scanTargets>
+		  </configuration>
+		</plugin>
+
+	</plugins>
+  </build>
+</project>
